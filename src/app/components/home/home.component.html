@@ -1,14 +1,10 @@
 
-<body>
-<header>WELCOME TO</header>
-<h1>Bookmark Bingo</h1>
-<section>
-  <div class="example-button-row">
-    <button mat-raised-button routerLink="/login">Login</button>
-    <button mat-raised-button routerLink="/signup">SignUp</button>
-  </div>
-</section>
-</body>
-
-
-
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link.link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">{{link.label}}
+  </a>
+</nav>
+<router-outlet></router-outlet>

@@ -3,19 +3,21 @@
     *ngFor="let card of cards">
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{card.title}}</mat-card-title>
-        <mat-card-subtitle>{{card.short_url}}</mat-card-subtitle>
+        <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image':'url(src/assets/images/blue.jpg)}'}"></div>
+        <mat-grid-list cols="4" rowHeight="100px" class="header">
+          <mat-grid-tile [colspan]=2><button mat-button class="title" >{{card.title}}</button></mat-grid-tile>
+          <mat-grid-tile [colspan]=1><button mat-button color="primary" class="edit"><fa-icon [icon]="['fas','edit']"></fa-icon></button></mat-grid-tile>
+          <mat-grid-tile [colspan]=1><button mat-button color="accent" class="trash"><fa-icon [icon]="['fas','trash']"></fa-icon></button></mat-grid-tile>
+        </mat-grid-list>
+
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
       <mat-card-content>
-        <p>
           {{card.description}}
-        </p>
       </mat-card-content>
       <mat-card-actions>
-        <a href="https://google.com"><button mat-button>REDIRECT</button></a>
-        <button mat-button [cdkCopyToClipboard]=card.original_url>COPY LINK TO CLIPBOARD</button>
+        <button mat-button><fa-icon [icon]="['fas','share-alt']"></fa-icon>{{card.short_url}}</button>
+        <button mat-button><fa-icon [icon]="['fas','comment-alt']"></fa-icon></button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>

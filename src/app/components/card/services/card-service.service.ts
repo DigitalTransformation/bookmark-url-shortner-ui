@@ -10,8 +10,8 @@ export class CardServiceService {
   private getcardsUrl: string;
   private postcardsUrl: string;
   constructor(private http: HttpClient) {
-    this.getcardsUrl = 'https://digital-org.herokuapp.com/card/all/';
-    this.postcardsUrl = 'https://digital-org.herokuapp.com/card/';
+    this.getcardsUrl = 'https://localhost:8081/card/all/';
+    this.postcardsUrl = 'https://localhost:8081/card/';
   }
 
   public findAll(): Observable<Card[]>{

@@ -21,7 +21,8 @@ export class Card {
   updated_date: string;
   // tslint:disable-next-line:variable-name
   updated_by: any;
+  active: boolean;
   // tslint:disable-next-line:variable-name
   group_name: string;
-  picture: any;
+  file: any;
 }

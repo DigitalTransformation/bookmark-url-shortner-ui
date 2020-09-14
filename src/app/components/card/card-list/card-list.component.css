@@ -1,8 +1,18 @@
 .example-card {
-  max-width: 500px;
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+}
+.header{
+  position: inherit;
+}
+.title{
+  width: 500vw;
+  text-align: left;
+}
+.edit{
+  float: right;
+}
+.trash{
+  float: right;
 }

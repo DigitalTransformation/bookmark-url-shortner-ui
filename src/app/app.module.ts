@@ -16,13 +16,19 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatOptionModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import { HomeComponent } from './components/home/home.component';
 import {FormControl, Validators} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import {AuthService} from './components/login/auth.service';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { GroupComponent } from './components/group/group/group.component';
 
 
 
@@ -33,6 +39,8 @@ import {AuthService} from './components/login/auth.service';
     CreateCardComponent,
     HomeComponent,
     LoginComponent,
+    LandingPageComponent,
+    GroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +59,16 @@ import {AuthService} from './components/login/auth.service';
     MatOptionModule,
     MatSelectModule,
     ClipboardModule,
+    FontAwesomeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
   ],
-  providers: [CardServiceService , AuthService],
+  providers: [CardServiceService , AuthService, MatDatepickerModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+  }
+}

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CardServiceService} from '../services/card-service.service';
 import { Card } from '../model/card';
 
-
 @Component({
   selector: 'app-card-list',
   templateUrl: './card-list.component.html',

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  hide = true;
-  constructor() { }
+  navLinks: any[];
+  activeLinkIndex = -1;
+  constructor(private router: Router) {
+    this.navLinks = [
+      {
+        label: 'Card catalog',
+        link: './cards',
+        index: 0
+      }, {
+        label: 'Group catalog',
+        link: './group',
+        index: 1
+      },
+    ];
+  }
 
   ngOnInit(): void {
+    this.router.events.subscribe((res) => {
+      this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
+    });
   }
 
 }
