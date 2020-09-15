@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {EmailServiceService} from '../card/services/email-service.service';
 import {Email} from '../card/model/email';
+import {DataService} from '../../shared/data.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,14 +11,16 @@ import {Email} from '../card/model/email';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  emailid: Email;
+  emaillocal: string;
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private emailservice: EmailServiceService) {
-    this.emailid = new Email();
+              private dataService: DataService,
+              ) {
+
   }
   email = new FormControl('', [Validators.required, Validators.email]);
 
+  // tslint:disable-next-line:typedef
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -25,9 +28,10 @@ export class LandingPageComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+  // tslint:disable-next-line:typedef
   onSubmit(){
+    this.dataService.setemailGlobal(this.emaillocal);
     this.gotoHomePage();
-    /*this.emailservice.save(this.emailid).subscribe(result => this.gotoHomePage());*/
   }
   // tslint:disable-next-line:typedef
   gotoHomePage(){

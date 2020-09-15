@@ -5,15 +5,23 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  public sharedData:string;
+  public emailGlobal: string;
+  private cardId: number;
   constructor(){
-    this.sharedData = "String from myService";
   }
 
-  setData (data) {
-    this.sharedData = data;
+  setemailGlobal (data) {
+    this.emailGlobal = data;
   }
-  getData () {
-    return this.sharedData;
+  getemailGlobal () {
+    return this.emailGlobal;
   }
+  getcardId(): number {
+    return this.cardId;
+  }
+
+  setcardId(value: number) {
+    this.cardId = value;
+  }
+
 }

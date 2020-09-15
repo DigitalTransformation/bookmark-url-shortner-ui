@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
-import { CardListComponent } from './components/card/card-list/card-list.component';
+import {CardListComponent} from './components/card/card-list/card-list.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +42,8 @@ import {DataService} from './shared/data.service';
     LoginComponent,
     LandingPageComponent,
     GroupComponent,
-  ],
+
+],
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),

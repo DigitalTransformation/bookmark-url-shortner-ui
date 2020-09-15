@@ -1,19 +1,22 @@
+<button mat-raised-button  routerLink="/addCard">Add</button>
 <mat-grid-list cols="4" rowHeight="1000px">
-  <mat-grid-tile
-    *ngFor="let card of cards">
+  <mat-grid-tile *ngFor="let card of cards">
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image':'url(src/assets/images/blue.jpg)}'}"></div>
-        <mat-grid-list cols="4" rowHeight="100px" class="header">
-          <mat-grid-tile [colspan]=2><button mat-button class="title" >{{card.title}}</button></mat-grid-tile>
-          <mat-grid-tile [colspan]=1><button mat-button color="primary" class="edit"><fa-icon [icon]="['fas','edit']"></fa-icon></button></mat-grid-tile>
-          <mat-grid-tile [colspan]=1><button mat-button color="accent" class="trash"><fa-icon [icon]="['fas','trash']"></fa-icon></button></mat-grid-tile>
-        </mat-grid-list>
-
+        <!--<div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image':'url(src/assets/images/blue.jpg)}'}"></div>-->
+        {{card.title}}
       </mat-card-header>
       <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
       <mat-card-content>
-          {{card.description}}
+        <mat-grid-list cols="4" rowHeight="100px" rowWidth="500px"  class="header">
+          <mat-grid-tile [colspan]=2>
+            <input type="file" (change)="onFileSelect($event)"/>
+            <button mat-button color="primary" class="upload" (click)="onUpload(card.id)"><fa-icon [icon]="['fas','upload']"></fa-icon></button>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]=1><button mat-button color="primary" class="edit" (click)="onEdit(card.id)"><fa-icon [icon]="['fas','edit']"></fa-icon></button></mat-grid-tile>
+          <mat-grid-tile [colspan]=1><button mat-button color="accent" class="trash" (click)="onDelete(card.id)"><fa-icon [icon]="['fas','trash']"></fa-icon></button></mat-grid-tile>
+        </mat-grid-list>
+        <p>{{card.description}}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button><fa-icon [icon]="['fas','share-alt']"></fa-icon>{{card.short_url}}</button>
@@ -22,3 +25,4 @@
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+<router-outlet></router-outlet>

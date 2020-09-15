@@ -4,6 +4,7 @@ import {CardServiceService} from '../services/card-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DataService} from '../../../shared/data.service';
 
 @Component({
   selector: 'app-create-card',
@@ -14,13 +15,17 @@ export class CreateCardComponent  {
   uploadForm: FormGroup;
   selectedFile: File;
   message: string;
+  emailGlobal: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private cardService: CardServiceService,
     private httpClient: HttpClient,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dataService: DataService,
   ) {
+    this.emailGlobal = this.dataService.getemailGlobal();
     this.buildForm();
   }
 
@@ -36,37 +41,17 @@ export class CreateCardComponent  {
       updated_by: ['', [ Validators.minLength(2), Validators.maxLength(30)]],
       team: ['', [ Validators.minLength(2), Validators.maxLength(30)]],
       tribe: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      created_by: [this.emailGlobal],
     });
-  }
-  // tslint:disable-next-line:typedef
-  onFileSelect(event) {
-    this.selectedFile = event.target.files[0];
   }
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    console.log(this.uploadForm.value);
     this.cardService.save(this.uploadForm.value).subscribe(result => this.gotoCardList());
-    this.onUpload();
 
   }
-  onUpload(){
-    const uploadImageData = new FormData();
-    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
-    this.httpClient.post('https://localhost:8081/card/upload', uploadImageData, { observe: 'response' })
-      .subscribe((response) =>
-      {if (response.status === 200){
-        this.message = 'Image upload success';
-      }
-      else{
-        this.message = 'Image upload not succesful';
-      }
-      });
-
-  }
-
   // tslint:disable-next-line:typedef
   gotoCardList() {
-    this.router.navigate(['/cards']);
+    this.router.navigate(['/home/cards']);
   }
 }

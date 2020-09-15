@@ -9,12 +9,12 @@ import {FormControl} from '@angular/forms';
 })
 export class EmailServiceService {
 
-  private postemailUrl: string;
+  /*private postemailUrl: string;
   constructor(private http: HttpClient) {
     this.postemailUrl = 'http://localhost:8081/email-validate/';
   }
 
   public save(email: FormControl){
     return this.http.post<Card>(this.postemailUrl, "kavana.tad@gmail.com");
-  }
+  }*/
 }
