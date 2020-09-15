@@ -3,7 +3,10 @@ import { CardServiceService} from '../services/card-service.service';
 import { Card } from '../model/card';
 import {DataService} from '../../../shared/data.service';
 import {HttpClient} from '@angular/common/http';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {CardListDialogComponent} from '../card-list-dialog/card-list-dialog.component';
+import {ShareUrlComponent} from '../share-url/share-url.component';
+import {SuggestionBoxComponent} from '../suggestion-box/suggestion-box.component';
 
 @Component({
   selector: 'app-card-list',
@@ -17,8 +20,6 @@ export class CardListComponent implements OnInit {
   message: string;
   private selectedFile;
   private deleteUrl;
-  private finalDelete;
-  private uploadUrl = 'http://localhost:8081/card/upload/';
   private baseUrl = 'http://localhost:8081/card/';
 
   constructor(private cardService: CardServiceService,
@@ -29,29 +30,10 @@ export class CardListComponent implements OnInit {
     this.emailGlobal = dataService.getemailGlobal();
   }
 
-  // tslint:disable-next-line:typedef
-  onFileSelect(event) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  // tslint:disable-next-line:typedef
-  onUpload(id: number){
-    const uploadImageData = new FormData();
-    uploadImageData.append('file', this.selectedFile, this.selectedFile.name);
-    this.httpClient.post(this.uploadUrl.concat(String(id)), uploadImageData, { observe: 'response' })
-      .subscribe((response) =>
-      {if (response.status === 200){
-        this.message = 'Image upload success';
-      }
-      else{
-        this.message = 'Image upload not succesful';
-      }
-      });
-  }
 
   // tslint:disable-next-line:typedef
   onEdit(id: number){
-
+    this.openDialog(id);
   }
 
   // tslint:disable-next-line:typedef
@@ -68,5 +50,34 @@ export class CardListComponent implements OnInit {
     this.cardService.findAll(this.emailGlobal).subscribe(data => {
     this.cards = data;
     });
+  }
+  // tslint:disable-next-line:typedef
+  openDialog(id: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = id;
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    this.dialog.open(CardListDialogComponent, dialogConfig);
+  }
+
+  // tslint:disable-next-line:typedef variable-name
+  openDialogShare(short_url: string){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = short_url;
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    this.dialog.open(ShareUrlComponent, dialogConfig);
+  }
+
+  // tslint:disable-next-line:typedef
+  openDialogSuggest(id: number){
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = id;
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    this.dialog.open(SuggestionBoxComponent, dialogConfig);
   }
 }

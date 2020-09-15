@@ -6,6 +6,7 @@
 mat-card-header{
   position: inherit;
   background-color: #3f51b5;
+  color:white;
 }
 .title{
   width: 500vw;
@@ -23,4 +24,10 @@ mat-card{
   height: auto;
   border-color: black !important;
   border-style: solid !important;
+}
+#add{
+  margin-top: 2vh;
+  margin-left: 1200px;
+  height: 5vh;
+  width: 10vw;
 }
