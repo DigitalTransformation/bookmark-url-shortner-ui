@@ -30,6 +30,11 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import {MatTabsModule} from '@angular/material/tabs';
 import { GroupComponent } from './components/group/group/group.component';
 import {DataService} from './shared/data.service';
+import {CardListDialogComponent} from './components/card/card-list-dialog/card-list-dialog.component';
+import { CardListUpdateComponent } from './components/card/card-list-update/card-list-update.component';
+import { ShareUrlComponent } from './components/card/share-url/share-url.component';
+import { SuggestionBoxComponent } from './components/card/suggestion-box/suggestion-box.component';
+import { UpdateImageComponent } from './components/card/update-image/update-image.component';
 
 
 
@@ -42,6 +47,11 @@ import {DataService} from './shared/data.service';
     LoginComponent,
     LandingPageComponent,
     GroupComponent,
+    CardListDialogComponent,
+    CardListUpdateComponent,
+    ShareUrlComponent,
+    SuggestionBoxComponent,
+    UpdateImageComponent,
 
 ],
   imports: [
@@ -67,7 +77,8 @@ import {DataService} from './shared/data.service';
     MatTabsModule,
   ],
   providers: [CardServiceService , AuthService, MatDatepickerModule, DataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CardListDialogComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

@@ -10,11 +10,13 @@ import {DataService} from '../../../shared/data.service';
 export class CardServiceService {
   private getcardsUrl: string;
   private postcardsUrl: string;
+  private updatecardsUrl: string;
 
   constructor(private http: HttpClient,
               private dataService: DataService) {
     this.getcardsUrl = 'http://localhost:8081/card/all/';
     this.postcardsUrl = 'http://localhost:8081/card/create';
+    this.updatecardsUrl = 'http://localhost:8081/card/update';
   }
   // tslint:disable-next-line:typedef
   public findAll(emailGlobal: string){
@@ -28,6 +30,9 @@ export class CardServiceService {
 
   // tslint:disable-next-line:typedef
 
-
+  // tslint:disable-next-line:typedef
+  public update(card: Card){
+    return this.http.patch(this.updatecardsUrl, card);
+  }
 
 }
