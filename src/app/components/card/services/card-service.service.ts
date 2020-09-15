@@ -11,7 +11,7 @@ export class CardServiceService {
   private postcardsUrl: string;
   constructor(private http: HttpClient) {
     this.getcardsUrl = 'https://localhost:8081/card/all/';
-    this.postcardsUrl = 'https://localhost:8081/card/';
+    this.postcardsUrl = 'https://localhost:8081/card/create';
   }
 
   public findAll(): Observable<Card[]>{

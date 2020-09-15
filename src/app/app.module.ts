@@ -29,6 +29,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { GroupComponent } from './components/group/group/group.component';
+import {DataService} from './shared/data.service';
 
 
 
@@ -64,7 +65,7 @@ import { GroupComponent } from './components/group/group/group.component';
     MatNativeDateModule,
     MatTabsModule,
   ],
-  providers: [CardServiceService , AuthService, MatDatepickerModule],
+  providers: [CardServiceService , AuthService, MatDatepickerModule, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
