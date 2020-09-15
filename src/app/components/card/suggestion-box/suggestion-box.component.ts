@@ -1,0 +1,41 @@
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DataService} from '../../../shared/data.service';
+import {HttpClient} from '@angular/common/http';
+
+@Component({
+  selector: 'app-suggestion-box',
+  templateUrl: './suggestion-box.component.html',
+  styleUrls: ['./suggestion-box.component.css']
+})
+export class SuggestionBoxComponent implements OnInit {
+
+  id: number;
+  suggestionText: string;
+  private sugestionUrl = 'http://localhost:8081/card/suggestion/';
+  private finalUrl: string;
+  constructor(private dialogRef: MatDialogRef<SuggestionBoxComponent>,
+              private dataService: DataService,
+              private httpClient: HttpClient,
+              public dialog: MatDialog,
+              @Inject(MAT_DIALOG_DATA) data) {
+    this.id = data;
+  }
+
+  ngOnInit(): void {
+  }
+
+  OnSubmit(){
+    this.finalUrl = this.sugestionUrl.concat(String(this.id));
+    this.httpClient.post(this.finalUrl, this.suggestionText).subscribe(res => {
+      alert('Suggestion submitted for validation');
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  close(){
+    this.dialogRef.close();
+  }
+
+
+}
