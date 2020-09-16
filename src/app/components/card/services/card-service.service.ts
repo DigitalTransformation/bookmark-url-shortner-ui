@@ -11,6 +11,7 @@ export class CardServiceService {
   private getcardsUrl: string;
   private postcardsUrl: string;
   private updatecardsUrl: string;
+  private emailGlobal = sessionStorage.getItem('emailGlobal');
 
   constructor(private http: HttpClient,
               private dataService: DataService) {
@@ -18,10 +19,12 @@ export class CardServiceService {
     this.postcardsUrl = 'http://localhost:8081/card/create';
     this.updatecardsUrl = 'http://localhost:8081/card/update';
   }
+
   // tslint:disable-next-line:typedef
   public findAll(emailGlobal: string){
     console.log('entered');
-    return this.http.post<Card[]>(this.getcardsUrl, emailGlobal);
+    console.log(this.emailGlobal);
+    return this.http.post<Card[]>(this.getcardsUrl, this.emailGlobal);
   }
   // tslint:disable-next-line:typedef
   public save(card: Card){

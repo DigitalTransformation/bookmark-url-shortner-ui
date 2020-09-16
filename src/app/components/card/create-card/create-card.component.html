@@ -13,23 +13,17 @@
             <mat-label>Title</mat-label>
             <input matInput placeholder="Placeholder" formControlName="title">
           </mat-form-field>
+        </p>
         <p>
-          <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label >Description</mat-label>
-            <textarea matInput placeholder="Placeholder" formGroupName ="description" #message maxlength="256"></textarea>
-            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="description">
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Original_url</mat-label>
             <input matInput placeholder="Placeholder" formControlName="original_url">
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Active</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="active">
           </mat-form-field>
         </p>
         <p>
@@ -64,7 +58,19 @@
             <input matInput placeholder="Placeholder" formControlName="component">
           </mat-form-field>
         </p>
-        <button mat-raised-button color="primary" type="submit" >Submit</button>
+
+        <p>
+          <mat-form-field appearance="filled">
+            <input  matInput placeholder="Placeholder" ngModel={{emailGlobal}}  formControlName="created_by" hidden>
+          </mat-form-field>
+        <p>
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" >Submit</button>
+            <button mat-raised-button type="submit" routerLink="/home/cards">Close</button>
+          </div>
+        </section>
+
       </form>
     </div>
   </mat-card-content>

@@ -6,10 +6,10 @@ import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/login/login.component';
 import {LandingPageComponent} from './components/landing-page/landing-page.component';
 import {GroupComponent} from './components/group/group/group.component';
+import {CreateGroupComponent} from './components/group/create-group/create-group.component';
 
 const routes: Routes = [
   { path: 'cards', component: CardListComponent },
-  { path: 'addCard', component: CreateCardComponent},
   { path: 'land' , component: LandingPageComponent},
   {path: '', redirectTo: 'land', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
@@ -19,7 +19,9 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'cards', pathMatch: 'full'},
       { path: 'cards', component: CardListComponent},
-      { path: 'group', component: GroupComponent}
+      { path: 'group', component: GroupComponent},
+      { path: 'cards/addCard', component: CreateCardComponent},
+      {path: 'group/createGroup', component: CreateGroupComponent}
     ]
   },
   ];

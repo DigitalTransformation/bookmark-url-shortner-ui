@@ -35,6 +35,7 @@ import { CardListUpdateComponent } from './components/card/card-list-update/card
 import { ShareUrlComponent } from './components/card/share-url/share-url.component';
 import { SuggestionBoxComponent } from './components/card/suggestion-box/suggestion-box.component';
 import { UpdateImageComponent } from './components/card/update-image/update-image.component';
+import { CreateGroupComponent } from './components/group/create-group/create-group.component';
 
 
 
@@ -52,6 +53,7 @@ import { UpdateImageComponent } from './components/card/update-image/update-imag
     ShareUrlComponent,
     SuggestionBoxComponent,
     UpdateImageComponent,
+    CreateGroupComponent,
 
 ],
   imports: [

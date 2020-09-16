@@ -25,7 +25,7 @@ export class CreateCardComponent  {
     private formBuilder: FormBuilder,
     private dataService: DataService,
   ) {
-    this.emailGlobal = this.dataService.getemailGlobal();
+    this.emailGlobal = sessionStorage.getItem('emailGlobal');
     this.buildForm();
   }
 
@@ -34,14 +34,14 @@ export class CreateCardComponent  {
   buildForm(){
     this.uploadForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(250)]],
       original_url: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       expire_date: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      active: [''],
+      component: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       updated_by: ['', [ Validators.minLength(2), Validators.maxLength(30)]],
       team: ['', [ Validators.minLength(2), Validators.maxLength(30)]],
       tribe: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      created_by: [this.emailGlobal],
+      created_by: [''],
     });
   }
 

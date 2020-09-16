@@ -12,8 +12,7 @@
         <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" #userForm="ngForm">
           <p>
             <mat-form-field appearance="filled">
-              <mat-label>id</mat-label>
-              <input  matInput placeholder="Placeholder" ngModel={{id}}  formControlName="id" disabled>
+              <input  matInput placeholder="Placeholder" ngModel={{id}}  formControlName="id" hidden>
             </mat-form-field>
           <p>
           <p>
@@ -22,12 +21,12 @@
               <input matInput placeholder="Placeholder" formControlName="title">
             </mat-form-field>
           <p>
-            <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label >Description</mat-label>
-              <textarea matInput placeholder="Placeholder" formGroupName ="description" #message maxlength="256"></textarea>
-              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="description">
             </mat-form-field>
-          </p>
+          <p>
           <p>
             <mat-form-field appearance="outline">
               <mat-label>Original_url</mat-label>

@@ -1,12 +1,15 @@
-<button mat-raised-button class="mat-primary" id="add" routerLink="/addCard" >Add a new Card</button>
-<mat-grid-list cols="4" rowHeight="1000px">
+<button mat-raised-button class="mat-primary" id="add" routerLink="addCard" >Add a new Card</button>
+<mat-grid-list cols="4" rowHeight="250px" [gutterSize]="'20px'" class="matgrid">
   <mat-grid-tile *ngFor="let card of cards">
     <mat-card class="example-card">
       <mat-card-header>
-        <!--<div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image':'url(src/assets/images/blue.jpg)}'}"></div>-->
+        <button mat-button></button>
         {{card.title}}
       </mat-card-header>
-      <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+    <button mat-button (click)="getImage(card.id)">button</button>
+      <div *ngIf=retrievedImage>
+        <img [src]="retrievedImage">
+      </div>
       <mat-card-content>
         <mat-grid-list cols="4" rowHeight="100px" rowWidth="500px"  class="header">
           <mat-grid-tile [colspan]=2>

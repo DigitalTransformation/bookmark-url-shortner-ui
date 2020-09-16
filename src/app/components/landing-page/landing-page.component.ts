@@ -31,6 +31,7 @@ export class LandingPageComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit(){
     this.dataService.setemailGlobal(this.emaillocal);
+    sessionStorage.setItem('emailGlobal', this.emaillocal);
     this.gotoHomePage();
   }
   // tslint:disable-next-line:typedef

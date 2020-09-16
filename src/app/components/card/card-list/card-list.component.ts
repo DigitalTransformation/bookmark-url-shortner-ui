@@ -7,6 +7,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {CardListDialogComponent} from '../card-list-dialog/card-list-dialog.component';
 import {ShareUrlComponent} from '../share-url/share-url.component';
 import {SuggestionBoxComponent} from '../suggestion-box/suggestion-box.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-card-list',
@@ -20,14 +21,18 @@ export class CardListComponent implements OnInit {
   message: string;
   private selectedFile;
   private deleteUrl;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
   private baseUrl = 'http://localhost:8081/card/';
 
   constructor(private cardService: CardServiceService,
               private dataService: DataService,
               private httpClient: HttpClient,
-              public dialog: MatDialog
+              public dialog: MatDialog,
+              public router: Router,
   ) {
-    this.emailGlobal = dataService.getemailGlobal();
+   this.emailGlobal = sessionStorage.getItem('emailGlobal');
   }
 
 
@@ -41,8 +46,9 @@ export class CardListComponent implements OnInit {
   this.deleteUrl  = this.baseUrl.concat(String(id)).concat('/').concat(this.emailGlobal);
   if (confirm('Are you sure to delete' + id)) {
       console.log('Implement delete functionality here');
+      this.router.navigate(['/home/cards']);
     }
-  this.httpClient.post(this.deleteUrl, '').subscribe();
+  this.httpClient.delete(this.deleteUrl).subscribe();
   }
   // tslint:disable-next-line:typedef
   ngOnInit(){
@@ -79,5 +85,18 @@ export class CardListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     this.dialog.open(SuggestionBoxComponent, dialogConfig);
+  }
+
+  // tslint:disable-next-line:typedef
+  getImage(id: number) {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.httpClient.get('http://localhost:8081/card/download-octa/' + id)
+      .subscribe(
+    res => {
+      this.retrieveResonse = res;
+      this.base64Data = this.retrieveResonse.picByte;
+      this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+    }
+  );
   }
 }
