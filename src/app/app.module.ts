@@ -36,6 +36,11 @@ import { ShareUrlComponent } from './components/card/share-url/share-url.compone
 import { SuggestionBoxComponent } from './components/card/suggestion-box/suggestion-box.component';
 import { UpdateImageComponent } from './components/card/update-image/update-image.component';
 import { CreateGroupComponent } from './components/group/create-group/create-group.component';
+import { GroupListComponent } from './components/group/group-list/group-list.component';
+import { CardInGroupListComponent } from './components/group/card-in-group-list/card-in-group-list.component';
+import { CreateCardInGroupComponent } from './components/group/create-card-in-group/create-card-in-group.component';
+import { CardComponent } from './components/card/card/card.component';
+import { SuggestionListComponent } from './components/card/suggestion-list/suggestion-list.component';
 
 
 
@@ -54,6 +59,11 @@ import { CreateGroupComponent } from './components/group/create-group/create-gro
     SuggestionBoxComponent,
     UpdateImageComponent,
     CreateGroupComponent,
+    GroupListComponent,
+    CardInGroupListComponent,
+    CreateCardInGroupComponent,
+    CardComponent,
+    SuggestionListComponent,
 
 ],
   imports: [

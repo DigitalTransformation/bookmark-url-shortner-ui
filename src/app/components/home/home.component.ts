@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     this.navLinks = [
       {
         label: 'Card catalog',
-        link: './cards',
+        link: './card',
         index: 0
       }, {
         label: 'Group catalog',

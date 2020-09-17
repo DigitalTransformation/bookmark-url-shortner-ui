@@ -12,6 +12,10 @@ export class SuggestionBoxComponent implements OnInit {
 
   id: number;
   suggestionText: string;
+  datarequest: any;
+  emailGlobal = sessionStorage.getItem('emailGlobal');
+
+
   private sugestionUrl = 'http://localhost:8081/card/suggestion/';
   private finalUrl: string;
   constructor(private dialogRef: MatDialogRef<SuggestionBoxComponent>,
@@ -20,15 +24,17 @@ export class SuggestionBoxComponent implements OnInit {
               public dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) data) {
     this.id = data;
+    this.datarequest = {card_id: this.id, email: this.emailGlobal, suggestion_text: this.suggestionText};
   }
 
   ngOnInit(): void {
   }
 
   OnSubmit(){
-    this.finalUrl = this.sugestionUrl.concat(String(this.id));
-    this.httpClient.post(this.finalUrl, this.suggestionText).subscribe(res => {
+    this.finalUrl = this.sugestionUrl;
+    this.httpClient.post(this.finalUrl, this.datarequest).subscribe(res => {
       alert('Suggestion submitted for validation');
+      this.dialogRef.close();
     });
   }
 
@@ -36,6 +42,10 @@ export class SuggestionBoxComponent implements OnInit {
   close(){
     this.dialogRef.close();
   }
+
+
+
+
 
 
 }

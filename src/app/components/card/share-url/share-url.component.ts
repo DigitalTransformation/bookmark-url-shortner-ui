@@ -16,7 +16,7 @@ export class ShareUrlComponent implements OnInit {
               private httpClient: HttpClient,
               public dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) data) {
-    this.short_url = data;
+    this.short_url = 'http://localhost:8081/' + data;
     console.log(this.short_url);
 
   }

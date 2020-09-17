@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-group',
@@ -7,7 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupComponent implements OnInit {
 
-  constructor() { }
+  navLinks: any[];
+  activeLinkIndex = -1;
+  constructor(private router: Router) {
+    this.navLinks = [
+      {
+        label: 'Add Group',
+        link: './addGroup',
+        index: 0
+      }, {
+        label: 'Add card to group',
+        link: './addCardToGroup',
+        index: 1
+      },
+      {
+        label: 'List group',
+        link: './listGroup',
+        index: 1
+      },
+      {
+        label: 'List cards in Group',
+        link: './listCardsInGroup',
+        index: 1
+      },
+    ];
+  }
 
   ngOnInit(): void {
   }

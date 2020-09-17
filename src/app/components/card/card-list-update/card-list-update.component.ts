@@ -46,7 +46,9 @@ export class CardListUpdateComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.cardService.update(this.uploadForm.value).subscribe(res => {
-      alert('Card details updated'); });
+      alert('Card details updated');
+      this.dialogRef.close();
+    });
   }
 
   // tslint:disable-next-line:typedef

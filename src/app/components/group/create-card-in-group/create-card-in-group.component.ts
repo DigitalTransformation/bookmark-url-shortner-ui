@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Card} from '../model/card';
-import {CardServiceService} from '../services/card-service.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GroupService} from '../services/group.service';
+import {HttpClient} from '@angular/common/http';
 import {DataService} from '../../../shared/data.service';
 
 @Component({
-  selector: 'app-create-card',
-  templateUrl: './create-card.component.html',
-  styleUrls: ['./create-card.component.css']
+  selector: 'app-create-card-in-group',
+  templateUrl: './create-card-in-group.component.html',
+  styleUrls: ['./create-card-in-group.component.css']
 })
-export class CreateCardComponent  {
+export class CreateCardInGroupComponent implements OnInit {
+
   uploadForm: FormGroup;
   selectedFile: File;
   message: string;
@@ -20,7 +20,7 @@ export class CreateCardComponent  {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private cardService: CardServiceService,
+    private groupService: GroupService,
     private httpClient: HttpClient,
     private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -33,25 +33,26 @@ export class CreateCardComponent  {
   // tslint:disable-next-line:typedef
   buildForm(){
     this.uploadForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       description: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(250)]],
-      original_url: ['', [Validators.required]],
-      expire_date: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       component: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      updated_by: ['', [ Validators.minLength(2), Validators.maxLength(30)]],
-      team: ['', [ Validators.minLength(2), Validators.maxLength(30)]],
+      team: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       tribe: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      updated_by: [''],
       created_by: [''],
     });
   }
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    this.cardService.save(this.uploadForm.value).subscribe(result => this.gotoCardList());
+    this.groupService.save(this.uploadForm.value).subscribe(result => this.gotoGroupList());
 
   }
   // tslint:disable-next-line:typedef
-  gotoCardList() {
-    this.router.navigate(['/home/cards']);
+  gotoGroupList() {
+    this.router.navigate(['/home/group/listCardsInGroup']);
+  }
+
+  ngOnInit(): void {
   }
 }

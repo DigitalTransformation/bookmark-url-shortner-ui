@@ -46,7 +46,7 @@ export class CardListComponent implements OnInit {
   this.deleteUrl  = this.baseUrl.concat(String(id)).concat('/').concat(this.emailGlobal);
   if (confirm('Are you sure to delete' + id)) {
       console.log('Implement delete functionality here');
-      this.router.navigate(['/home/cards']);
+      this.router.navigate(['/home/card']);
     }
   this.httpClient.delete(this.deleteUrl).subscribe();
   }
