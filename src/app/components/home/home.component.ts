@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
   navLinks: any[];
   activeLinkIndex = -1;
+  emailGlobal:string;
   constructor(private router: Router) {
     this.navLinks = [
       {
@@ -21,6 +22,16 @@ export class HomeComponent implements OnInit {
         index: 1
       },
     ];
+    this.emailGlobal = sessionStorage.getItem('emailGlobal');
+  }
+
+  home(){
+    sessionStorage.clear();
+    this.router.navigate(['/home']);
+  }
+  logout(){
+    sessionStorage.clear();
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {

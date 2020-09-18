@@ -11,4 +11,13 @@ export class Group {
   tribe: any;
   // tslint:disable-next-line:variable-name
   updated_by: any;
+  id:number;
+
+  created_date : any;
+
+  updated_date: any;
+
+  active: boolean;
+  hasAdmin: boolean;
+
 }

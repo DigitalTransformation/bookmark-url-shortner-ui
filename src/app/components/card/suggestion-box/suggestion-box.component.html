@@ -1,11 +1,8 @@
 <h1 mat-dialog-title>Suggest card changes</h1>
 <div mat-dialog-content>
-  <form class="example-form">
   <mat-form-field class="example-full-width">
-    <mat-label>Leave your suggestions</mat-label>
-    <textarea matInput placeholder="" [(ngModel)]="suggestionText" [ngModelOptions]="{standalone: true}"></textarea>
+    <textarea matInput type="text" [(ngModel)]="suggestion_text" [ngModelOptions]="{standalone: true}"></textarea>
   </mat-form-field>
-</form>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button class="mat-primary" (click)="OnSubmit()">Submit</button>

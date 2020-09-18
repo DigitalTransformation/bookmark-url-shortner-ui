@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GroupService} from '../services/group.service';
 import {HttpClient} from '@angular/common/http';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {DataService} from '../../../shared/data.service';
 import {Card} from '../../card/model/card';
 import {Group} from '../model/group';
 
 @Component({
-  selector: 'app-create-card-in-group',
-  templateUrl: './create-card-in-group.component.html',
-  styleUrls: ['./create-card-in-group.component.css']
+  selector: 'app-delete-card-from-group',
+  templateUrl: './delete-card-from-group.component.html',
+  styleUrls: ['./delete-card-from-group.component.css']
 })
-export class CreateCardInGroupComponent implements OnInit {
+export class DeleteCardFromGroupComponent implements OnInit {
 
   uploadForm: FormGroup;
   selectedFile: File;
@@ -20,8 +20,7 @@ export class CreateCardInGroupComponent implements OnInit {
   emailGlobal: string;
   displayCardsUrl='http://localhost:8081/card/all/admin';
   displayGroupUrl='http://localhost:8081/group/all/admin/';
-  submitUrl='http://localhost:8081/group/add-card-to-group/';
-
+  submitUrl='http://localhost:8081/group/remove-card-from-group';
   cards:Card[];
   groups:Group[];
   card_id:number;
@@ -77,5 +76,4 @@ export class CreateCardInGroupComponent implements OnInit {
     this.displayCards();
     this.displayGroups();
   }
-
 }

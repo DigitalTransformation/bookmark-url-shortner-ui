@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DataService} from '../../../shared/data.service';
 import {Group} from '../../group/model/group';
+import {Card} from '../../card/model/card';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class GroupService {
   private getgroupUrl: string;
   private postgroupUrl: string;
   private updategroupUrl: string;
+  private getCardsinGroupUrl: string;
+  private getAllgroupUrl: string;
   private emailGlobal = sessionStorage.getItem('emailGlobal');
 
   constructor(private http: HttpClient,
@@ -18,6 +21,8 @@ export class GroupService {
     this.getgroupUrl = 'http://localhost:8081/group/all/';
     this.postgroupUrl = 'http://localhost:8081/group/create';
     this.updategroupUrl = 'http://localhost:8081/group/update';
+    this.getCardsinGroupUrl = 'http://localhost:8081/group/card-from-group/';
+    this.getAllgroupUrl = 'http://localhost:8081/group/all/';
   }
 
   // tslint:disable-next-line:typedef
@@ -36,4 +41,14 @@ export class GroupService {
   public update(group: Group){
     return this.http.patch(this.updategroupUrl, group);
   }
+
+  public getCards(group_id:number) {
+    return this.http.get<Card[]>(this.getCardsinGroupUrl.concat(String(group_id)));
+  }
+  public getAllGroup(){
+    console.log("group in");
+    console.log(this.emailGlobal);
+    return this.http.get<Group[]>(this.getAllgroupUrl.concat(this.emailGlobal));
+  }
+
 }

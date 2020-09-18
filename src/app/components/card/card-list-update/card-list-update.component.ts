@@ -14,6 +14,7 @@ export class CardListUpdateComponent implements OnInit {
 
   uploadForm: FormGroup;
   id: number;
+  emailGlobal:  string;
   constructor(
     private httpClient: HttpClient,
     private formBuilder: FormBuilder,
@@ -24,6 +25,7 @@ export class CardListUpdateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.id = data;
+    this.emailGlobal= sessionStorage.getItem('emailGlobal');
     this.buildForm();
   }
 

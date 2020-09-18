@@ -25,5 +25,5 @@ export class Card {
   // tslint:disable-next-line:variable-name
   group_name: string;
   file: any;
-  hadAdmin: boolean;
+  hasAdmin: boolean;
 }

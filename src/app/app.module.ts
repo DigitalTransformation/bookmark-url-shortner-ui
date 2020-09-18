@@ -41,6 +41,12 @@ import { CardInGroupListComponent } from './components/group/card-in-group-list/
 import { CreateCardInGroupComponent } from './components/group/create-card-in-group/create-card-in-group.component';
 import { CardComponent } from './components/card/card/card.component';
 import { SuggestionListComponent } from './components/card/suggestion-list/suggestion-list.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+import { GroupUpdateComponent } from './components/group/group-update/group-update.component';
+import { DeleteCardFromGroupComponent } from './components/group/delete-card-from-group/delete-card-from-group.component';
+import { AddUserGroupComponent } from './components/group/add-user-group/add-user-group.component';
+import { RemoveUserGroupComponent } from './components/group/remove-user-group/remove-user-group.component';
 
 
 
@@ -64,6 +70,10 @@ import { SuggestionListComponent } from './components/card/suggestion-list/sugge
     CreateCardInGroupComponent,
     CardComponent,
     SuggestionListComponent,
+    GroupUpdateComponent,
+    DeleteCardFromGroupComponent,
+    AddUserGroupComponent,
+    RemoveUserGroupComponent,
 
 ],
   imports: [
@@ -87,6 +97,8 @@ import { SuggestionListComponent } from './components/card/suggestion-list/sugge
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
   ],
   providers: [CardServiceService , AuthService, MatDatepickerModule, DataService],
   bootstrap: [AppComponent],

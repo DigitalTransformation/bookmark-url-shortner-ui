@@ -35,10 +35,18 @@ export class CardListComponent implements OnInit {
    this.emailGlobal = sessionStorage.getItem('emailGlobal');
   }
 
+  getCardList(){
+    this.cardService.findAll(this.emailGlobal).subscribe(data => {
+      this.cards = data;
+    });
+  }
 
   // tslint:disable-next-line:typedef
   onEdit(id: number){
     this.openDialog(id);
+  }
+  redirect(){
+    this.router.navigate(['/home/card/listCards']);
   }
 
   // tslint:disable-next-line:typedef
@@ -46,16 +54,15 @@ export class CardListComponent implements OnInit {
   this.deleteUrl  = this.baseUrl.concat(String(id)).concat('/').concat(this.emailGlobal);
   if (confirm('Are you sure to delete' + id)) {
       console.log('Implement delete functionality here');
-      this.router.navigate(['/home/card']);
     }
-  this.httpClient.delete(this.deleteUrl).subscribe();
+    this.httpClient.delete(this.deleteUrl).subscribe(res => this.redirect());
+    this.getCardList();
+
   }
+
   // tslint:disable-next-line:typedef
   ngOnInit(){
-    console.log(this.emailGlobal);
-    this.cardService.findAll(this.emailGlobal).subscribe(data => {
-    this.cards = data;
-    });
+    this.getCardList();
   }
   // tslint:disable-next-line:typedef
   openDialog(id: number) {

@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 export class SuggestionBoxComponent implements OnInit {
 
   id: number;
-  suggestionText: string;
+  suggestion_text: string;
   datarequest: any;
   emailGlobal = sessionStorage.getItem('emailGlobal');
 
@@ -24,7 +24,7 @@ export class SuggestionBoxComponent implements OnInit {
               public dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) data) {
     this.id = data;
-    this.datarequest = {card_id: this.id, email: this.emailGlobal, suggestion_text: this.suggestionText};
+
   }
 
   ngOnInit(): void {
@@ -32,6 +32,7 @@ export class SuggestionBoxComponent implements OnInit {
 
   OnSubmit(){
     this.finalUrl = this.sugestionUrl;
+    this.datarequest = {card_id: this.id, email: this.emailGlobal, suggestion_text: this.suggestion_text};
     this.httpClient.post(this.finalUrl, this.datarequest).subscribe(res => {
       alert('Suggestion submitted for validation');
       this.dialogRef.close();

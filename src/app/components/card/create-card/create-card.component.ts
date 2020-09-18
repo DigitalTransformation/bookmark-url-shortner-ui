@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../../../shared/data.service';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-create-card',
@@ -16,6 +17,7 @@ export class CreateCardComponent  {
   selectedFile: File;
   message: string;
   emailGlobal: string;
+  matspinner: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -47,11 +49,12 @@ export class CreateCardComponent  {
 
   // tslint:disable-next-line:typedef
   onSubmit() {
+    this.matspinner = true;
     this.cardService.save(this.uploadForm.value).subscribe(result => this.gotoCardList());
 
   }
   // tslint:disable-next-line:typedef
   gotoCardList() {
-    this.router.navigate(['/home/cards']);
+    this.router.navigate(['/home/card']);
   }
 }

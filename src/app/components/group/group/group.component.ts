@@ -24,12 +24,27 @@ export class GroupComponent implements OnInit {
       {
         label: 'List group',
         link: './listGroup',
-        index: 1
+        index: 2
       },
       {
         label: 'List cards in Group',
         link: './listCardsInGroup',
-        index: 1
+        index: 3
+      },
+      {
+        label: 'Delete cards from Group',
+        link: './deleteCardsFromGroup',
+        index: 3
+      },
+      {
+        label: 'Add users to Group',
+        link: './addUserToGroup',
+        index: 5
+      },
+      {
+        label: 'Remove users from Group',
+        link: './deleteUserFromGroup',
+        index: 6
       },
     ];
   }

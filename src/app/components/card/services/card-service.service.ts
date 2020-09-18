@@ -22,7 +22,6 @@ export class CardServiceService {
 
   // tslint:disable-next-line:typedef
   public findAll(emailGlobal: string){
-    console.log('entered');
     console.log(this.emailGlobal);
     return this.http.post<Card[]>(this.getcardsUrl, this.emailGlobal);
   }
