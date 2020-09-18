@@ -59,7 +59,7 @@ export class CreateCardInGroupComponent implements OnInit {
   displayGroups(){
     this.httpClient.get<Group[]>(this.displayGroupUrl + this.emailGlobal).subscribe(res=>{
       this.groups = res;
-    })
+    });
 
   }
   // tslint:disable-next-line:typedef
