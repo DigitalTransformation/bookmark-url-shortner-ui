@@ -46,7 +46,10 @@ export class RemoveUserGroupComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.finalUrl = this.submitUrl.concat(String(this.group_id));
-    const dataset = {added_by: this.userEmail, group_id: this.group_id};
+    const dataset = {
+      adminEmail: this.emailGlobal,
+      groupId: this.group_id,
+      userEmail: this.userEmail};
     this.httpClient.post(this.finalUrl, dataset).subscribe(res => {alert('User added to group'); this.gotoGroupList(); });
 
   }

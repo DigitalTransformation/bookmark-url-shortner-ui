@@ -18,10 +18,10 @@ export class AddUserGroupComponent implements OnInit {
   selectedFile: File;
   message: string;
   userEmail: string;
-  emailGlobal:string;
-  finalUrl:string;
+  emailGlobal: string;
+  finalUrl: string;
   displayGroupUrl = 'http://localhost:8081/group/all/admin/';
-  submitUrl = 'http://localhost:8081/group/user-to-group?';
+  submitUrl = 'http://localhost:8081/group/user-to-group';
 
   groups: Group[];
   group_id: number;
@@ -48,9 +48,14 @@ export class AddUserGroupComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     console.log(this.userEmail);
-    this.finalUrl = this.submitUrl.concat('adminEmail='.concat(this.emailGlobal).concat('&groupId=').concat(String(this.group_id)));
+    //this.finalUrl = this.submitUrl.concat('adminEmail='.concat(this.emailGlobal).concat('&groupId=').concat(String(this.group_id)));
     // tslint:disable-next-line:max-line-length
-    this.httpClient.post('http://localhost:8081/group/user-to-group?adminEmail=kavana.tad%40gmail.com&groupId=132', this.userEmail).subscribe();
+    const dataset = {
+      adminEmail: this.emailGlobal,
+      groupId: this.group_id,
+      userEmail: this.userEmail};
+    // tslint:disable-next-line:max-line-length
+    this.httpClient.post(this.submitUrl, dataset).subscribe();
     alert('User added to group');
     this.gotoGroupList();
 
