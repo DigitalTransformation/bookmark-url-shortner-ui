@@ -11,7 +11,7 @@ export class EmailServiceService {
 
   /*private postemailUrl: string;
   constructor(private http: HttpClient) {
-    this.postemailUrl = 'http://localhost:8081/email-validate/';
+    this.postemailUrl = 'https://bookmark-url-shortner.herokuapp.com//email-validate/';
   }
 
   public save(email: FormControl){

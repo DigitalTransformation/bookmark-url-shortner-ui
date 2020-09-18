@@ -27,8 +27,8 @@ export class CardInGroupListComponent implements OnInit {
   cards: Card[];
   groups: Group[];
   group_id:number;
-  private baseUrl = 'http://localhost:8081/card/';
-  displayGroupUrl='http://localhost:8081/group/all/admin/';
+  private baseUrl = 'https://bookmark-url-shortner.herokuapp.com//card/';
+  displayGroupUrl='https://bookmark-url-shortner.herokuapp.com//group/all/admin/';
   groupUrl='http://localhost:4200/home/group/listCardsInGroup';
 
   constructor(private groupService: GroupService,
@@ -114,7 +114,7 @@ export class CardInGroupListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getImage(id: number) {
     //Make a call to Sprinf Boot to get the Image Bytes.
-    this.httpClient.get('http://localhost:8081/card/download-octa/' + id)
+    this.httpClient.get('https://bookmark-url-shortner.herokuapp.com//card/download-octa/' + id)
       .subscribe(
         res => {
           this.retrieveResonse = res;

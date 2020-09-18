@@ -16,7 +16,7 @@ export class SuggestionBoxComponent implements OnInit {
   emailGlobal = sessionStorage.getItem('emailGlobal');
 
 
-  private sugestionUrl = 'http://localhost:8081/card/suggestion/';
+  private sugestionUrl = 'https://bookmark-url-shortner.herokuapp.com//card/suggestion/';
   private finalUrl: string;
   constructor(private dialogRef: MatDialogRef<SuggestionBoxComponent>,
               private dataService: DataService,

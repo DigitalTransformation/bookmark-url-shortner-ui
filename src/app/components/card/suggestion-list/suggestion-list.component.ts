@@ -17,8 +17,8 @@ import {map, startWith, switchMap} from 'rxjs/operators';
 })
 export class SuggestionListComponent implements OnInit  {
 
-  getSuggestionUrl = 'http://localhost:8081/card/suggestion/';
-  deleteSuggestionUrl = 'http://localhost:8081/card/suggestion/'
+  getSuggestionUrl = 'https://bookmark-url-shortner.herokuapp.com//card/suggestion/';
+  deleteSuggestionUrl = 'https://bookmark-url-shortner.herokuapp.com//card/suggestion/'
   emailGlobal: string;
   suggestions:Suggestion[];
   displayedColumns: any[] = ['card_id', 'email', 'suggested_date', 'suggestion_text','delete_suggestion'];

@@ -18,11 +18,11 @@ export class GroupService {
 
   constructor(private http: HttpClient,
               private dataService: DataService) {
-    this.getgroupUrl = 'http://localhost:8081/group/all/';
-    this.postgroupUrl = 'http://localhost:8081/group/create';
-    this.updategroupUrl = 'http://localhost:8081/group/update';
-    this.getCardsinGroupUrl = 'http://localhost:8081/group/card-from-group/';
-    this.getAllgroupUrl = 'http://localhost:8081/group/all/';
+    this.getgroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/all/';
+    this.postgroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/create';
+    this.updategroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/update';
+    this.getCardsinGroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/card-from-group/';
+    this.getAllgroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/all/';
   }
 
   // tslint:disable-next-line:typedef

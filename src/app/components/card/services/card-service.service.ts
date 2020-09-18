@@ -15,9 +15,9 @@ export class CardServiceService {
 
   constructor(private http: HttpClient,
               private dataService: DataService) {
-    this.getcardsUrl = 'http://localhost:8081/card/all/';
-    this.postcardsUrl = 'http://localhost:8081/card/create';
-    this.updatecardsUrl = 'http://localhost:8081/card/update';
+    this.getcardsUrl = 'https://bookmark-url-shortner.herokuapp.com//card/all/';
+    this.postcardsUrl = 'https://bookmark-url-shortner.herokuapp.com//card/create';
+    this.updatecardsUrl = 'https://bookmark-url-shortner.herokuapp.com//card/update';
   }
 
   // tslint:disable-next-line:typedef

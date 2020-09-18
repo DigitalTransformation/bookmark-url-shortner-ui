@@ -18,9 +18,9 @@ export class CreateCardInGroupComponent implements OnInit {
   selectedFile: File;
   message: string;
   emailGlobal: string;
-  displayCardsUrl='http://localhost:8081/card/all/admin';
-  displayGroupUrl='http://localhost:8081/group/all/admin/';
-  submitUrl='http://localhost:8081/group/add-card-to-group/';
+  displayCardsUrl='https://bookmark-url-shortner.herokuapp.com//card/all/admin';
+  displayGroupUrl='https://bookmark-url-shortner.herokuapp.com//group/all/admin/';
+  submitUrl='https://bookmark-url-shortner.herokuapp.com//group/add-card-to-group/';
 
   cards:Card[];
   groups:Group[];

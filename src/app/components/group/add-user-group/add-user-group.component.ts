@@ -20,8 +20,8 @@ export class AddUserGroupComponent implements OnInit {
   userEmail: string;
   emailGlobal: string;
   finalUrl: string;
-  displayGroupUrl = 'http://localhost:8081/group/all/admin/';
-  submitUrl = 'http://localhost:8081/group/user-to-group';
+  displayGroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/all/admin/';
+  submitUrl = 'https://bookmark-url-shortner.herokuapp.com//group/user-to-group';
 
   groups: Group[];
   group_id: number;

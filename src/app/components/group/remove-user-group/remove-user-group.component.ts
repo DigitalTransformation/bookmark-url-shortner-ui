@@ -18,8 +18,8 @@ export class RemoveUserGroupComponent implements OnInit {
   userEmail: string;
   emailGlobal:string;
   finalUrl:string;
-  displayGroupUrl = 'http://localhost:8081/group/all/admin/';
-  submitUrl = 'http://localhost:8081/group/user-from-group?groupId=';
+  displayGroupUrl = 'https://bookmark-url-shortner.herokuapp.com//group/all/admin/';
+  submitUrl = 'https://bookmark-url-shortner.herokuapp.com//group/user-from-group?groupId=';
 
   groups: Group[];
   group_id: number;

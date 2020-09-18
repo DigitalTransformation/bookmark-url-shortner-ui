@@ -20,7 +20,7 @@ export class GroupListComponent implements OnInit {
   emailGlobal: string;
   groups: Group[];
 
-  private baseUrl = 'http://localhost:8081/card/';
+  private baseUrl = 'https://bookmark-url-shortner.herokuapp.com//card/';
 
   constructor(private groupService: GroupService,
               private dataService: DataService,
